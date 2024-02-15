@@ -1,0 +1,16 @@
+.container{
+  border: 2px solid rgb(118, 218, 248);
+  height: 150px;
+  background-color: rgb(118, 218, 248);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.heading{
+  font-size: 50px;
+  color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.anchor{
+ margin-right: 30px;
+}

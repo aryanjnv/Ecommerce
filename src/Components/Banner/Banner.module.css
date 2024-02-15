@@ -1,0 +1,11 @@
+.container{
+  border: 2px solid gray;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  background-color: gray;
+  color: white;
+  font-size: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  /* align-items: center; */
+}

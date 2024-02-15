@@ -3,6 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   background-color: black;
+  border-bottom: 2px solid white;
 }
 .list{
  display: flex;
@@ -23,7 +24,7 @@ li{
   align-items: center;
   
 }
-button{
+.button{
   background-color: white;
   color: black;
   width: 80px;
