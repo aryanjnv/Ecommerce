@@ -66,3 +66,40 @@ th {
   margin: 0;
 }
 
+.input{
+  width: 35px;
+  height: 26px;
+}
+.remove{
+  height: 30px;
+  background-color: rgb(207, 5, 5);
+  padding: 8px;
+  border: 1px solid white;
+  color: white;
+  border-radius: 5px;
+}
+
+.amount{
+  border: 1px solid white;
+  width: 200px;
+  margin-left: 430px;
+  border-radius: 10px;
+  padding: 7px;
+  background-color: rgb(157, 32, 32);
+  color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.close{
+  width: 170px;
+  background-color: rgb(151, 208, 227);
+  border: 2px solid white;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  height: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-left: 52vh;
+}
+.close:hover{
+  background-color: rgb(78, 135, 154);
+}

@@ -1,48 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Modal from '../UI/Modal'
 import classes from './Cart.module.css'
+import CartContext from '../Context/cart-context'
+import Store from '../Store/Store'
 
 const Cart = (props) => {
-    const cartElements = [
+    const cartContext=useContext(CartContext)
+    let totalAmount=0
 
-        {
-        
-        title: 'Colors',
-        
-        price: 100,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-        
-        quantity: 2,
-        
-        },
-        
-        {
-        
-        title: 'Black and white Colors',
-        
-        price: 50,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-        
-        quantity: 3,
-        
-        },
-        
-        {
-        
-        title: 'Yellow and Black Colors',
-        
-        price: 70,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-        
-        quantity: 1,
-        
-        }
-        
-        ]
+    const removeItemHandler=(item)=>{
+     cartContext.removeItem(item)
+    }
+    cartContext.items.forEach((item)=>{
+        totalAmount+=item.price
+    })
+    const purchaseHandler=()=>{
+        alert('Thanks for purchase')
+        cartContext.cartBlank()
+    }
+   
   return (
+    <>
     <Modal onClose={props.onClose}>
         <h1>Cart</h1>
         <table>
@@ -52,18 +30,23 @@ const Cart = (props) => {
                     <th className={classes.heading}>Quantity</th>
                 </thead>
            
-        {cartElements.map((item)=>(
+        {cartContext.items.map((item)=>(
             <tr>
-           <td className={classes.image}><img src={item.imageUrl} alt="" /></td> 
-            <td><h3 className={classes.price}>{item.price}</h3></td>
-            <td><p>{item.quantity}</p></td>
+           <td className={classes.image}><img src={item.imageUrl} alt="" />{item.album}</td> 
+            <td><h3 className={classes.price}>${item.price}.00</h3></td>
+            <td><p>{item.quantity}</p> <br/>
+            <button className={classes.remove} onClick={()=>removeItemHandler(item)}>Remove</button></td>
             </tr>
           
         ))}
          </table>
-        <button onClick={props.onClose}>Close</button>
+         <h3 className={classes.amount}>Total Amount: ${totalAmount}</h3>
+       { totalAmount? <button onClick={purchaseHandler} className={classes.close}>Purchase</button>:''}
+        <button onClick={props.onClose} className={classes.close}>Close</button>
 
     </Modal>
+   
+    </>
   )
 }
 

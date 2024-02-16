@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import classes from './Store.module.css'
+import CartContext from '../Context/cart-context'
 
 const Store = () => {
+
+  const cartContext=useContext(CartContext)
+
+  const addItemHandler=(item,id)=>{
+    console.log("item",item)
+   cartContext.addItem(item,id)
+  }
     const productsArr = [
 
         {
@@ -12,7 +20,9 @@ const Store = () => {
         
         imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
 
-        album:'Album 1'
+        album:'Album 1',
+
+        quantity:1
         
         },
         
@@ -24,7 +34,9 @@ const Store = () => {
         
         imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
 
-        album:'Album 2'
+        album:'Album 2',
+
+        quantity:1
         
         },
         
@@ -36,7 +48,9 @@ const Store = () => {
         
         imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
 
-        album:'Album 3'
+        album:'Album 3',
+
+        quantity:1
         
         },
         
@@ -48,7 +62,9 @@ const Store = () => {
         
         imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
 
-        album: 'Album 4'
+        album: 'Album 4',
+       
+        quantity:1
         
         }
         
@@ -62,7 +78,7 @@ const Store = () => {
         <h2 className={classes.heading}>{item.album}</h2>
         <img src={item.imageUrl} alt="" />
         <p className={classes.price}>${item.price}.00</p>
-        <button className={classes.button}>Add To Cart</button>
+        <button className={classes.button} onClick={()=>addItemHandler(item,item.album)}>Add To Cart</button>
       </div>
     ))}
   </div>
