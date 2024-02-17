@@ -1,0 +1,21 @@
+.heading{
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.maindiv{
+  display: flex;
+  justify-content: space-between;
+}
+.image{
+  border: 5px solid black;
+  margin: 40px;
+  border-radius: 150px;
+  margin-left:140px ;
+}
+.p{
+  width: 1200px;
+  margin: 50px;
+  font-size: large;
+  color: gray;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

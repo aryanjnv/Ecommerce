@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import classes from './Navbar.module.css'
 import CartContext from '../Context/cart-context'
+import { Link, NavLink } from 'react-router-dom'
 
 
 const Navbar = (props) => {
@@ -12,8 +13,8 @@ const Navbar = (props) => {
     <nav className={classes.nav}>
         <ul className={classes.list}>
             <li>Home</li>
-            <li>Store</li>
-            <li>About</li>
+           <NavLink to='/'><li>Store</li></NavLink> 
+           <NavLink to='/about'><li>About</li></NavLink>
         </ul>
         <div className={classes.cart}>
             <button className={classes.button} onClick={props.onClick}>Cart</button>
