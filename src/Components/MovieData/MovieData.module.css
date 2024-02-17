@@ -1,0 +1,30 @@
+.item{
+  border-bottom: 2px solid rgb(178, 176, 176);
+}
+.button{
+margin-left: 765px;
+
+}
+.button:hover{
+  background-color: rgb(69, 191, 240);
+}
+.maindiv{
+  border :2px solid rgb(220, 217, 217);
+  width: 1500px;
+  margin-left: 200px;
+  background-color: rgb(220, 217, 217);
+  border-radius: 10px;
+  /* margin-bottom: 10px; */
+  
+}
+.item{
+  border: 2px solid rgb(251, 201, 230);
+  border-radius: 10px;
+  margin: 20px;
+  background-color: rgb(251, 201, 230);
+  padding: 10px;
+}
+.innerdiv{
+  display: flex;
+  justify-content: space-between;
+}
