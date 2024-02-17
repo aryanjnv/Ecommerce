@@ -1,9 +1,11 @@
 import React from 'react'
 import classes from './About.module.css'
+import Banner from '../Banner/Banner'
 
 const About = () => {
   return (
     <div>
+        <Banner/>
         <h1 className={classes.heading}>About</h1>
         <div className={classes.maindiv}>
             <img className={classes.image} src="https://prasadyash2411.github.io/ecom-website/img/Band%20Members.png" height='300px' width='300px' alt="" />

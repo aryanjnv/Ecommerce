@@ -1,0 +1,44 @@
+.container{
+  border: 2px solid gray;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  background-color: gray;
+  color: white;
+ 
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  /* align-items: center; */
+}
+.heading{
+  font-size: 100px;
+  margin-left: 620px;
+  margin-top: 5px;
+  
+}
+.p{
+  
+  font-size: 28px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  border: 1px solid skyblue;
+  width: 300px;
+  margin-left: 780px;
+  padding: 14px;
+  margin-top: 0px;
+}
+.play{
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 2px solid skyblue;
+  border-radius: 50%; /* This makes it a circle */
+  line-height: 40px; /* This centers the ▶ symbol vertically */
+  font-size: 24px;
+  text-align: center;
+  padding: 25px; /* Adjust font size as needed */
+  cursor: pointer;
+  color: skyblue;
+  font-size: 40px;
+  margin-left: 102vh;
+  margin-top: 0;
+}

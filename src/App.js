@@ -9,6 +9,7 @@ import Cart from './Components/Modal/Cart';
 import CartProvider from './Components/Context/CartProvider';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import About from './Components/About/About';
+import Home from './Components/Home/Home';
 
 function App() {
   const [cartIsShown,setCartIsShown]=useState(false)
@@ -26,10 +27,11 @@ function App() {
       <CartProvider>
         <BrowserRouter>
         <Navbar onClick={showCartHandler}/>
-        <Banner/>
+        
         <Routes>
           <Route path='/' element={<Store/>}/>
           <Route path='/about' element={<About/>}/>
+          <Route path='/home' element={<Home/>}/>
         </Routes>
         </BrowserRouter>
       {cartIsShown && <Cart onClose={hideCartHandler}/>}

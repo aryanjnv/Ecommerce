@@ -1,0 +1,86 @@
+/* .maindiv{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 10px;
+}
+.date{
+    margin: 5px;
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+} */
+
+.maindiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items at the top */
+  margin-bottom: 20px;
+  border-bottom: 2px solid black;
+}
+.item{
+  border-bottom:2px solid rgb(193, 191, 191);
+  
+ 
+}
+.heading{
+  text-align: center;
+  font-size: 30px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: rgb(58, 57, 57);
+}
+
+
+
+
+
+button {
+  /* Add your button styles */
+  border: 2px solid white;
+  background-color: skyblue;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  width: 180px;
+  font-size: 15px;
+
+}
+
+
+table {
+  border-collapse: collapse; 
+}
+
+table, th, td {
+  border: none; 
+}
+
+/* th, td {
+  padding: 8px;
+  margin: 50px; 
+} */
+
+/* Optional: Add some styling to differentiate header cells */
+th {
+  background-color: #f2f2f2; /* Light gray background for header cells */
+  font-weight: bold; /* Bold font for header cells */
+}
+
+.date{
+  font-size: 20px;
+}
+.place{
+  color: gray;
+  font-size: 17px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.city{
+  color: rgb(94, 93, 93);
+  /* font-family: Georgia, 'Times New Roman', Times, serif; */
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+
+
+
