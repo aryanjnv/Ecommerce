@@ -3,9 +3,11 @@ import classes from './MovieData.module.css';
 
 const MovieData = () => {
     const [movies, setMovies] = useState([]);
+    const [isLoading,setIsLoading]=useState(false)
 
     async function fetchMovieHandler() {
         try {
+            setIsLoading(true)
             const response = await fetch('https://swapi.dev/api/films/');
             const data = await response.json();
 
@@ -17,6 +19,7 @@ const MovieData = () => {
             }));
 
             setMovies(transformedMovies);
+            setIsLoading(false)
         } catch (error) {
             console.error('Error fetching movies:', error);
         }
@@ -28,7 +31,7 @@ const MovieData = () => {
 
           
                 <div className={classes.maindiv}>
-                    {movies.map((movie, index) => (
+                    { !isLoading && movies.length>0 && movies.map((movie, index) => (
                         <div className={classes.item} key={index}>
                             <div className={classes.innerdiv}>
                               <h3 className={classes.place}>{movie.title}</h3>
@@ -39,6 +42,8 @@ const MovieData = () => {
                             <td><button>BUY TICKETS</button></td>
                         </div>
                     ))}
+                    {!isLoading && movies.length===0 && <p>Found no Movies...</p>}
+                    {isLoading && <p>Loading...</p>}
                 </div>
             
         </div>
