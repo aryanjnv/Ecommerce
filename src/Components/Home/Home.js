@@ -2,6 +2,7 @@ import React from 'react'
 import HomePageBanner from '../HomePageBanner/HomePageBanner'
 import classes from './Home.module.css'
 import MovieData from '../MovieData/MovieData'
+import AddNewMovie from '../MovieData/AddNewMovie'
 
 const Home = () => {
    
@@ -9,7 +10,7 @@ const Home = () => {
         <div>
           <HomePageBanner />
           <h2 className={classes.heading}>MOVIES</h2>
-          
+          <AddNewMovie/>
           <MovieData/>
         </div>
       );
