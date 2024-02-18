@@ -10,7 +10,7 @@ const Home = () => {
         <div>
           <HomePageBanner />
           <h2 className={classes.heading}>MOVIES</h2>
-          <AddNewMovie/>
+        
           <MovieData/>
         </div>
       );

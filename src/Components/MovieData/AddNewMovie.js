@@ -1,47 +1,43 @@
-import React, { useState } from 'react'
+import React, { useRef } from 'react';
 
-const AddNewMovie = () => {
-    const [title,setTitle]=useState('')
-    const [openingText,setOpeningText]=useState('')
-    const [releaseDate,setReleaseDate]=useState('')
+// import classes from './AddMovie.module.css';
 
-    const titleChangeHandler=(event)=>{
-       setTitle(event.target.value)
-       console.log(event.target.value)
-    }
-    const openingTextChangehandler=(event)=>{
-        setOpeningText(event.target.value)
-        console.log(event.target.value)
-    }
-    const dateChangeHandler=(event)=>{
-        setReleaseDate(event.target.value)
-        console.log(event.target.value)
-    }
-    const submitFormhandler=(event)=>{
-        event.preventDefault();
-        const newObj={
-            title,
-            openingText,
-            releaseDate
-        } 
-        console.log(newObj)
+function AddMovie(props) {
+  const titleRef = useRef('');
+  const openingTextRef = useRef('');
+  const releaseDateRef = useRef('');
 
-        setTitle('')
-        setOpeningText('')
-        setReleaseDate('')
-    }
+  function submitHandler(event) {
+    event.preventDefault();
+
+    // could add validation here...
+
+    const movie = {
+      title: titleRef.current.value,
+      openingText: openingTextRef.current.value,
+      releaseDate: releaseDateRef.current.value,
+    };
+
+    props.onAddMovie(movie);
+  }
+
   return (
-    <form onSubmit={submitFormhandler}>
-        <label htmlFor="title">Title:</label><br/>
-        <input type="text" id='title' onChange={titleChangeHandler} value={title} /><br/>
-        <label htmlFor="openingText">Opening Text:</label><br/>
-        <input type="text" id='openingText' onChange={openingTextChangehandler} value={openingText} /><br/>
-        <label htmlFor="date">Release Date:</label><br/>
-        <input type="date" id='date' onChange={dateChangeHandler} value={releaseDate} /><br/>
-        <button>Add Movie</button>
-
+    <form onSubmit={submitHandler}>
+      <div >
+        <label htmlFor='title'>Title</label>
+        <input type='text' id='title' ref={titleRef} />
+      </div>
+      <div >
+        <label htmlFor='opening-text'>Opening Text</label>
+        <textarea rows='5' id='opening-text' ref={openingTextRef}></textarea>
+      </div>
+      <div >
+        <label htmlFor='date'>Release Date</label>
+        <input type='text' id='date' ref={releaseDateRef} />
+      </div>
+      <button>Add Movie</button>
     </form>
-  )
+  );
 }
 
-export default AddNewMovie
+export default AddMovie;

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import classes from './MovieData.module.css';
+import AddNewMovie from './AddNewMovie'
 
 const MovieData = () => {
     const [movies, setMovies] = useState([]);
@@ -13,6 +14,27 @@ const MovieData = () => {
         setIsLoading(false)
     }
 
+    async function addMovieHander(movie){
+    //   console.log(movie)
+ const response=  await fetch('https://react-http-834f8-default-rtdb.firebaseio.com/movies.json',{
+        method:'POST',
+        body:JSON.stringify(movie),
+        headers:{
+            'Content-Type':'application/json'
+        }
+    })
+    const data=await response.json();
+    console.log(data)
+}
+
+  async function deleteMovieHandler(id){
+    const response= await fetch(`https://react-http-834f8-default-rtdb.firebaseio.com/movies/${id}.json`,{
+       method:'DELETE'
+           })
+
+           setMovies(prevMovies => prevMovies.filter(movie => movie.id !== id));
+  }
+
    
 
     const fetchMovieHandler = useCallback(async (retryCount = 0) => {
@@ -20,20 +42,25 @@ const MovieData = () => {
         try {
             setIsLoading(true);
             setError(null);
-            const response = await fetch('https://swapi.dev/api/films/');
+            const response = await fetch('https://react-http-834f8-default-rtdb.firebaseio.com/movies.json');
             if (!response.ok) {
                 throw new Error('Something went wrong');
             }
             const data = await response.json();
+
+            const loadedMovies=[];
+
+            for(const key in data){
+                loadedMovies.push({
+                    id:key,
+                    title:data[key].title,
+                    openingText:data[key].openingText,
+                    releaseDate:data[key].releaseDate
+                })
+            }
     
-            const transformedMovies = data.results.map(movieData => ({
-                id: movieData.episode_id,
-                title: movieData.title,
-                openingText: movieData.opening_crawl,
-                releaseDate: movieData.release_date
-            }));
-    
-            setMovies(transformedMovies);
+          
+            setMovies(loadedMovies);
             setIsLoading(false);
         } catch (error) {
             console.error('Error occurred during fetch:', error.message);
@@ -55,6 +82,8 @@ const MovieData = () => {
 
    
     return (
+        <>
+         <AddNewMovie onAddMovie={addMovieHander}/>
         <div>
             <button className={classes.button} onClick={fetchMovieHandler}>Fetch Movie</button>
 
@@ -69,16 +98,20 @@ const MovieData = () => {
                           
                             <td className={classes.city}>{movie.openingText}</td><br/>
                             <td><button>BUY TICKETS</button></td>
+                            <button onClick={()=>deleteMovieHandler(movie.id)}>Delete Movie</button>
                         </div>
                     ))}
                     {!isLoading && movies.length===0 && !error && <p>Found no Movies...</p>}
                     {!isLoading && error && <p>{error}</p>}
                     {isLoading && <p>Loading...</p>}
+                  
                 </div>
 
                 <button onClick={cancelHandler}>Cancel</button>
             
         </div>
+       
+        </>
     );
 }
 
