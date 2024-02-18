@@ -1,30 +1,53 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import classes from './MovieData.module.css';
 
 const MovieData = () => {
     const [movies, setMovies] = useState([]);
     const [isLoading,setIsLoading]=useState(false)
+    const [error,setError]=useState(null)
 
-    async function fetchMovieHandler() {
+    const cancelHandler=()=>{
+        setIsLoading(false)
+    }
+
+   
+
+    const fetchMovieHandler = useCallback(async (retryCount = 0) => {
+        let MAX_RETRY_COUNT=5
         try {
-            setIsLoading(true)
-            const response = await fetch('https://swapi.dev/api/films/');
+            setIsLoading(true);
+            setError(null);
+            const response = await fetch('https://swapi.dev/api/film/');
+            if (!response.ok) {
+                throw new Error('Something went wrong');
+            }
             const data = await response.json();
-
+    
             const transformedMovies = data.results.map(movieData => ({
                 id: movieData.episode_id,
                 title: movieData.title,
                 openingText: movieData.opening_crawl,
                 releaseDate: movieData.release_date
             }));
-
+    
             setMovies(transformedMovies);
-            setIsLoading(false)
+            setIsLoading(false);
         } catch (error) {
-            console.error('Error fetching movies:', error);
+            setError(error.message);
+            setIsLoading(false);
+            if (retryCount < MAX_RETRY_COUNT) { // Define MAX_RETRY_COUNT as per your requirement
+                setTimeout(() => {
+                    fetchMovieHandler(retryCount + 1); // Retry with incremented retry count
+                }, 5000); // Retry after 5 seconds
+            }
         }
-    }
+    }, []);
+    
+    useEffect(()=>{
+        fetchMovieHandler()
+    },[fetchMovieHandler])
 
+   
     return (
         <div>
             <button className={classes.button} onClick={fetchMovieHandler}>Fetch Movie</button>
@@ -42,9 +65,12 @@ const MovieData = () => {
                             <td><button>BUY TICKETS</button></td>
                         </div>
                     ))}
-                    {!isLoading && movies.length===0 && <p>Found no Movies...</p>}
+                    {!isLoading && movies.length===0 && !error && <p>Found no Movies...</p>}
+                    {!isLoading && error && <p>{error}</p>}
                     {isLoading && <p>Loading...</p>}
                 </div>
+
+                <button onClick={cancelHandler}>Cancel</button>
             
         </div>
     );
