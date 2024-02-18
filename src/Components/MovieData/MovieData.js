@@ -38,7 +38,7 @@ const MovieData = () => {
    
 
     const fetchMovieHandler = useCallback(async (retryCount = 0) => {
-        let MAX_RETRY_COUNT=5
+//let MAX_RETRY_COUNT=5
         try {
             setIsLoading(true);
             setError(null);

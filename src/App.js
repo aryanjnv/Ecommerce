@@ -10,6 +10,7 @@ import CartProvider from './Components/Context/CartProvider';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import About from './Components/About/About';
 import Home from './Components/Home/Home';
+import ContactUs from './Components/ContactUs/ContactUs';
 
 function App() {
   const [cartIsShown,setCartIsShown]=useState(false)
@@ -32,6 +33,7 @@ function App() {
           <Route path='/' element={<Store/>}/>
           <Route path='/about' element={<About/>}/>
           <Route path='/home' element={<Home/>}/>
+          <Route path='/contact' element={<ContactUs/>}/>
         </Routes>
         </BrowserRouter>
       {cartIsShown && <Cart onClose={hideCartHandler}/>}
