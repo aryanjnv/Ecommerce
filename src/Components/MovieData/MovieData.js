@@ -5,6 +5,9 @@ const MovieData = () => {
     const [movies, setMovies] = useState([]);
     const [isLoading,setIsLoading]=useState(false)
     const [error,setError]=useState(null)
+   
+
+   
 
     const cancelHandler=()=>{
         setIsLoading(false)
@@ -17,7 +20,7 @@ const MovieData = () => {
         try {
             setIsLoading(true);
             setError(null);
-            const response = await fetch('https://swapi.dev/api/film/');
+            const response = await fetch('https://swapi.dev/api/films/');
             if (!response.ok) {
                 throw new Error('Something went wrong');
             }
@@ -33,14 +36,17 @@ const MovieData = () => {
             setMovies(transformedMovies);
             setIsLoading(false);
         } catch (error) {
+            console.error('Error occurred during fetch:', error.message);
             setError(error.message);
-            setIsLoading(false);
-            if (retryCount < MAX_RETRY_COUNT) { // Define MAX_RETRY_COUNT as per your requirement
-                setTimeout(() => {
-                    fetchMovieHandler(retryCount + 1); // Retry with incremented retry count
-                }, 5000); // Retry after 5 seconds
-            }
+           
+            // if (retryCount < MAX_RETRY_COUNT) {
+            //     setTimeout(() => {
+            //         fetchMovieHandler(retryCount + 1); // Retry with incremented retry count
+            //     }, 5000); // Retry after 5 seconds
+            // }
+            
         }
+        setIsLoading(false);
     }, []);
     
     useEffect(()=>{
