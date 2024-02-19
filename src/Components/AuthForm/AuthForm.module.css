@@ -1,0 +1,38 @@
+.maindiv{
+  border: 2px solid rgb(227, 225, 225);
+  border-radius: 10px;
+  width: 400px;
+  height: 550px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  margin-left: 700px;
+}
+.heading{
+  text-align: center;
+  font-size: 45px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: skyblue;
+  padding: 10px;
+  color: white;
+}
+.label{
+margin-left: 20px;
+font-size:25px ;
+
+}
+.input{
+margin-left: 20px;
+margin: 20px 20px;
+width: 250px;
+height: 25px;
+border-radius: 10px;
+}
+.button{
+margin-left: 20px;
+}
+.p{
+  margin-left: 20px;
+  font-size: 18px;
+  color: rgb(62, 196, 249);
+  cursor: pointer;
+}
