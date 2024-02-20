@@ -7,17 +7,22 @@ import Footer from './Components/Footer/Footer';
 import { useState } from 'react';
 import Cart from './Components/Modal/Cart';
 import CartProvider from './Components/Context/CartProvider';
-import { BrowserRouter, Route, Routes,Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes,Switch, useNavigate } from 'react-router-dom';
 import About from './Components/About/About';
 import Home from './Components/Home/Home';
 import ContactUs from './Components/ContactUs/ContactUs';
 import ProductDetail from './Components/ProductDetail/ProductDetail';
 import Login from './Components/AuthForm/AuthForm';
 import ChangePassword from './Components/ChangePassword/ChangePassword';
+import AuthContext from './Auth-Context/auth-context';
+import NotFound from './NotFound/NotFound';
 // import SignUp from './Components/Login/SignUp';
 
 function App() {
   const [cartIsShown,setCartIsShown]=useState(false)
+  const authcontext=useState(AuthContext)
+
+  
 
   const showCartHandler=()=>{
     setCartIsShown(true)
@@ -103,7 +108,11 @@ function App() {
           <Route path='/contact' element={<ContactUs/>}/>
           <Route path='/products/:productId' element={<ProductDetail productsArr={productsArr}/>} exact/>
           <Route path="/login" element={<Login/>}/>
-          <Route path='/password' element={<ChangePassword/>}/>
+        {authcontext.isLoggedIn &&  <Route path='/password' element={<ChangePassword/>}/>}
+        <Route path='*' element={<NotFound/>}/>
+        
+          
+         
           {/* <Route path='/signup' element={<SignUp/>}/> */}
         </Routes>
         </BrowserRouter>

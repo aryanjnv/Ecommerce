@@ -1,0 +1,14 @@
+.maindiv{
+  border: 2px solid white;
+  width: 400px;
+  margin: 228px 700px;
+}
+
+.h1{
+  font-size: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.h3{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 20px;
+}
