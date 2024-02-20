@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import classes from "./Navbar.module.css";
 import CartContext from "../Context/cart-context";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import AuthContext from "../../Auth-Context/auth-Context";
+import AuthContext from "../../Auth-Context/auth-context";
 
 const Navbar = (props) => {
   const navigate = useNavigate();
