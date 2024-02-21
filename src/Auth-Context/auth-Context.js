@@ -55,10 +55,10 @@ export const AuthContextProvider = (props) => {
   };
 
   const contextValue = {
-    token: token,
-    isLoggedIn: isLoggedIn,
-    login: loginHandler,
-    logout: logoutHandler,
+     token: token,
+     isLoggedIn: isLoggedIn,
+     login: loginHandler,
+     logout: logoutHandler,
   };
 
   return (
