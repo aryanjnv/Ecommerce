@@ -4,7 +4,7 @@ import Store from './Components/Store/Store';
 import Banner from './Components/Banner/Banner';
 import Footer from './Components/Footer/Footer';
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Cart from './Components/Modal/Cart';
 import CartProvider from './Components/Context/CartProvider';
 import { BrowserRouter, Route, Routes,Switch, useNavigate } from 'react-router-dom';
@@ -20,7 +20,7 @@ import NotFound from './NotFound/NotFound';
 
 function App() {
   const [cartIsShown,setCartIsShown]=useState(false)
-  const authcontext=useState(AuthContext)
+  const authcontext=useContext(AuthContext)
 
   
 
