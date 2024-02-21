@@ -102,9 +102,9 @@ function App() {
         <Navbar onClick={showCartHandler}/>
         
         <Routes>
-          <Route path='/' element={<Store productsArr={productsArr}/>}/>
+          <Route path='/store' element={<Store productsArr={productsArr}/>}/>
           <Route path='/about' element={<About/>}/>
-          <Route path='/home' element={<Home/>}/>
+          <Route path='/' element={<Home/>}/>
           <Route path='/contact' element={<ContactUs/>}/>
           <Route path='/products/:productId' element={<ProductDetail productsArr={productsArr}/>} exact/>
           <Route path="/login" element={<Login/>}/>
