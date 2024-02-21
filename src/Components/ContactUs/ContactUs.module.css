@@ -3,15 +3,18 @@
 .formContainer {
   max-width: 400px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 33px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 78px;
+
 }
 
 .formContainer label {
   display: block;
   margin-bottom: 5px;
+  font-size: 23px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .formContainer input,
@@ -21,6 +24,7 @@
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  margin-right: 20px;
 }
 
 .formContainer button {
@@ -37,5 +41,8 @@
 }
 .heading{
   text-align: center;
+  font-size: 40px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
 

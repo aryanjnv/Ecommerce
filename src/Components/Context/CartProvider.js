@@ -106,8 +106,18 @@ const CartProvider = (props) => {
 
 
     }
-    const cartBlankHandler=()=>{
-      setItems([])
+    const cartBlankHandler=async()=>{
+      const email = localStorage.getItem('email');
+      const newEmail = email.replace(/[^\w\s]/gi, "");
+      let blankCart=[]
+      const response = await fetch(`https://react-http-834f8-default-rtdb.firebaseio.com/cartItems/${newEmail}.json`, {
+        method: 'PUT',
+        body: JSON.stringify(blankCart),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+      setItems(blankCart)
     }
 
     let cartContext={

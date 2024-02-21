@@ -39,12 +39,15 @@ const ChangePassword = () => {
   };
   
   return (
+    <div>
+    <h1 className={classes.heading}>Change Password</h1>
     <form className={classes.form} onSubmit={submitHandler}>
-        <h1 className={classes.heading}>Change Password</h1>
+      
         <label className={classes.label} htmlFor='password'>Enter New Password</label><br/>
         <input className={classes.input} type="password" minLength='7' id='password' ref={newPasswordInputRef} /><br/>
         <button type='submit'>Change Password</button><br/>
     </form>
+    </div>
   )
 }
 
