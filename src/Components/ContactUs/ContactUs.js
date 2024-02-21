@@ -26,7 +26,7 @@ const ContactUs = () => {
         name,
         email,
         mobile,
-        issue
+        issue 
     }
     const response=  await fetch('https://react-http-834f8-default-rtdb.firebaseio.com/contactData.json',{
         method:'POST',

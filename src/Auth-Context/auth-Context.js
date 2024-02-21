@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import CartContext from "../Components/Context/cart-context";
 
 const AuthContext = React.createContext({
   token: "",
@@ -11,6 +12,8 @@ export const AuthContextProvider = (props) => {
   const initialToken = localStorage.getItem("token");
   const [token, setToken] = useState(initialToken);
   const [isLoggedIn, setIsLoggedIn] = useState(!!initialToken);
+
+  // const cartcontext=useContext(CartContext)
 
   useEffect(() => {
     const tokenExpiryTime = 5 * 60 * 1000; 
@@ -39,12 +42,15 @@ export const AuthContextProvider = (props) => {
     };
   }, [token]);
 
-  const loginHandler = (token) => {
+  const loginHandler = async (token,email) => {
     setToken(token);
     localStorage.setItem("token", token);
-    const tokenExpirationTime = Date.now() + 5 * 60 * 1000; 
+    const tokenExpirationTime = Date.now() + 50 * 60 * 1000; 
     localStorage.setItem("tokenExpirationTime", tokenExpirationTime);
+    localStorage.setItem('email',email)
     setIsLoggedIn(true);
+    // await cartcontext.fetchData();
+  
   };
 
   const logoutHandler = () => {

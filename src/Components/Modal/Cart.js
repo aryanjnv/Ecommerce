@@ -8,8 +8,8 @@ const Cart = (props) => {
     const cartContext=useContext(CartContext)
     let totalAmount=0
 
-    const removeItemHandler=(item)=>{
-     cartContext.removeItem(item)
+    const removeItemHandler=(item,index)=>{
+     cartContext.removeItem(item,index)
     }
     cartContext.items.forEach((item)=>{
         totalAmount+=item.price
@@ -30,12 +30,12 @@ const Cart = (props) => {
                     <th className={classes.heading}>Quantity</th>
                 </thead>
            
-        {cartContext.items.map((item)=>(
+        {cartContext.items.map((item,index)=>(
             <tr>
            <td className={classes.image}><img src={item.imageUrl} alt="" />{item.album}</td> 
             <td><h3 className={classes.price}>${item.price}.00</h3></td>
             <td><p>{item.quantity}</p> <br/>
-            <button className={classes.remove} onClick={()=>removeItemHandler(item)}>Remove</button></td>
+            <button className={classes.remove} onClick={()=>removeItemHandler(item,index)}>Remove</button></td>
             </tr>
           
         ))}
